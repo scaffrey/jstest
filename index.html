@@ -20,7 +20,7 @@ prepend to URL to test http://htmlpreview.github.io/?
       </li>
       <li>
         <label form="url">URL:</label>
-        <input type="text" id="url" name="url1" />
+        <input type="text" id="url" name="url1" onkeyup="checkforvalidurl(url1)" />
       </li>
       <li>
         <label form="msg">Message:</label>
@@ -32,9 +32,9 @@ prepend to URL to test http://htmlpreview.github.io/?
     
 <script>
    function checkforvalidurl() {
-    var thelink = document.getElementById("mylink").value;
+    var thelink = document.getElementById("url1").value;
     var regEx = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm;
-    return regEx.test('https://www.google.com');
+    return regEx.test("url1");
 }
 
 function isValidURL() {
