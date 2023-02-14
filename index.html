@@ -19,11 +19,32 @@ prepend to URL to test http://htmlpreview.github.io/?
         <input type="email" id="mail" name="user_email" />
       </li>
       <li>
+        <label form="url">URL:</label>
+        <input type="text" id="url" name="url1" />
+      </li>
+      <li>
         <label form="msg">Message:</label>
         <textarea id="msg" name="user_message"></textarea>
       </li>
     </ul>
   </form>
   
+    
+<script>
+   function checkforvalidurl() {
+    var thelink = document.getElementById("mylink").value;
+    var regEx = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm;
+    return regEx.test('https://www.google.com');
+}
+
+function isValidURL() {
+    if (checkforvalidurl() == true) {
+        alert("Valid URL");
+    }
+    else {
+        alert("InValid URL");
+    }
+} 
+</script>
 </body>
 </html>
