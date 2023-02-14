@@ -4,36 +4,26 @@
 https://htmlpreview.github.io/?
 -->
   <head>
-    <title>Title of the Document</title>
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js">
-    </script>
+    <title>Simple javascript for validation</title>
   </head>
   <body>
     <form>
-      <p>Enter an email address:</p>
-      <input id='email'>
-      <button type='submit' id='validate'>Validate button</button>
-    </form>
-    <div id='result'></div>
-    <script>
-      function validateEmail(email) {
-        let res = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        return res.test(email);
-      }
-      function validate() {
-        let result = $("#result");
-        let email = $("#email").val();
-        result.text("");
-        if(validateEmail(email)) {
-          result.text(email + " is valid");
-          result.css("color", "blue");
-        } else {
-          result.text(email + " is not valid");
-          result.css("color", "red");
-        }
-        return false;
-      }
-      $("#validate").on("click", validate);
-    </script>
+  <label for="mail">
+    Please Enter an email address:
+  </label>
+  <input type="email" id="mail" name="mail" />
+  <button>Submit</button>
+</form>
+
+    const email = document.getElementById("mail");
+
+email.addEventListener("input", (event) => {
+  if (email.validity.typeMismatch) {
+    email.setCustomValidity("I am expecting an email address!");
+  } else {
+    email.setCustomValidity("");
+  }
+});
+
   </body>
 </html>
