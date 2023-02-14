@@ -8,43 +8,34 @@
 <!--
 prepend to URL to test http://htmlpreview.github.io/?
 -->
-<form action="/my-handling-form-page" method="post">
-    <ul>
-      <li>
-        <label form="name">Name:</label>
-        <input type="text" id="name" name="user_name" />
-      </li>
-      <li>
-        <label form="mail">Email:</label>
-        <input type="email" id="mail" name="user_email" />
-      </li>
-      <li>
-        <label form="url">URL:</label>
-        <input type="text" id="url" name="url1" onkeyup="checkforvalidurl(url1)" />
-      </li>
-      <li>
-        <label form="msg">Message:</label>
-        <textarea id="msg" name="user_message"></textarea>
-      </li>
-    </ul>
-  </form>
-  
+<form>
+      <p>Enter a url:</p>
+      <input id='url1'>
+      <button type='submit' id='validate'>Validate button</button>
+</form>
+<div id='result'></div>
     
 <script>
-   function checkforvalidurl() {
-    var thelink = document.getElementById("url1").value;
-    var regEx = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/gm;
-    return regEx.test("url1");
-}
+  function validateurl(url1) {
+     let res = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;  
+      return res.test(url1);
+  }
+    function validate() {
+        let result = $("#result");
+        let url1 = $("#url1").val();
+        result.text("");
+        if(validateurl(url1)) {
+          result.text(url1 + " is valid");
+          result.css("color", "blue");
+        } else {
+          result.text(url1 + " is not valid");
+          result.css("color", "red");
+        }
+        return false;
+      }
+      $("#validate").on("click", validate);
+    }
 
-function isValidURL() {
-    if (checkforvalidurl() == true) {
-        alert("Valid URL");
-    }
-    else {
-        alert("InValid URL");
-    }
-} 
 </script>
 </body>
 </html>
